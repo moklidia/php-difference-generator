@@ -1,0 +1,31 @@
+{
+    "name": "moklidia/gendiff",
+    "description": "second Hexlet project",
+    "bin": ["bin/gendiff"],
+    "type": "project",
+    "authors": [
+        {
+            "name": "moklidia",
+            "email": "kitsunegakkou@gmail.com"
+        }
+    ],
+    "require": {
+        "docopt/docopt": "^1.0",
+        "tightenco/collect": "^5.8"
+    },
+    "autoload": {
+        "files": [
+            "src/gendiff.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.1",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpunit": "phpunit",
+        "test": "phpunit tests"
+    }
+}
