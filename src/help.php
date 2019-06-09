@@ -1,6 +1,6 @@
 <?php
 
-namespace Gendiff\gendiff;
+namespace Gendiff\help;
 
 function run()
 {

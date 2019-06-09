@@ -11,15 +11,22 @@
     ],
     "require": {
         "docopt/docopt": "^1.0",
-        "tightenco/collect": "^5.8"
+        "tightenco/collect": "^5.8",
+        "funct/funct": "^1.5"
     },
     "autoload": {
         "files": [
-            "src/gendiff.php"
-        ]
+            "src/help.php",
+            "src/generator.php"
+        ],
+         "psr-4": {
+             "Gendiff\\": "src",
+             "Gendiff\\Tests\\": "tests"
+        }
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.4"
+        "squizlabs/php_codesniffer": "^3.4",
+        "phpunit/phpunit": "^8.1"
     },
     "scripts": {
         "phpcs": "phpcs",
