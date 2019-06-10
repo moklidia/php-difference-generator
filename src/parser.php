@@ -6,7 +6,7 @@ use function Gendiff\generator\generate;
 
 function run()
 {
-    require('vendor/docopt/docopt/src/docopt.php');
+    require('/vendor/docopt/docopt/src/docopt.php');
     
     $doc = <<<DOC
 	Generate diff
