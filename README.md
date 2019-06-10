@@ -6,6 +6,10 @@ Install:
 
 <a href="https://asciinema.org/a/mjRzD9ZYFmLYN0mq61uidWiog" target="_blank"><img src="https://asciinema.org/a/mjRzD9ZYFmLYN0mq61uidWiog.svg" /></a>
 
+Run:
+
+<a href="https://asciinema.org/a/nInPeojNAjqctUZys8PHSQ4Pk" target="_blank"><img src="https://asciinema.org/a/nInPeojNAjqctUZys8PHSQ4Pk.svg" /></a>
+
 Help:
 
 <a href="https://asciinema.org/a/pg8ZG51azn3QqBVFoP3LgKI8O" target="_blank"><img src="https://asciinema.org/a/pg8ZG51azn3QqBVFoP3LgKI8O.svg" /></a>
