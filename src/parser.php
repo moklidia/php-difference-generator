@@ -3,11 +3,10 @@
 namespace Gendiff\parser;
 
 use function Gendiff\generator\generate;
+use Docopt;
 
 function run()
 {
-    require('/vendor/docopt/docopt/src/docopt.php');
-    
     $doc = <<<DOC
 	Generate diff
 
@@ -21,7 +20,7 @@ function run()
 
 	DOC;
 
-    $args = \Docopt::handle($doc);
+    $args = Docopt::handle($doc);
 
     if (isset($args['<firstFile>']) && isset($args['<secondFile>'])) {
         $filePath1 = $args['<firstFile>'];
