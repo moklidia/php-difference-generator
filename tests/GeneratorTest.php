@@ -12,16 +12,8 @@ class GeneratorTest extends TestCase
      */
     public function testGenerator()
     {
-        $beforeJson = '{
-  		"host": "hexlet.io",
-  		"timeout": 50,
- 		  "proxy": "123.234.53.22"
-		}';
-        $afterJson = '{
-  		"timeout": 20,
-  		"verbose": true,
-  		"host": "hexlet.io"
-		}';
+        $path1 = __DIR__ . "/examples/before.json";
+        $path2 = __DIR__ . "/examples/after.json";
         $result = <<<EOT
         {
             host: hexlet.io
@@ -32,6 +24,6 @@ class GeneratorTest extends TestCase
         }
         EOT;
 
-        $this->assertEquals($result, generate($beforeJson, $afterJson));
+        $this->assertEquals($result, generate($path1, $path2));
     }
 }

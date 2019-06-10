@@ -2,7 +2,7 @@
 
 <?php
 
-use function Gendiff\help\run;
+use function Gendiff\parser\run;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';

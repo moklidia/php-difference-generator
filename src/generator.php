@@ -7,8 +7,8 @@ use Funct\Strings;
 
 function generate($beforeJson, $afterJson)
 {
-    $before = json_decode($beforeJson, true);
-    $after = json_decode($afterJson, true);
+    $before = json_decode(file_get_contents($beforeJson), true);
+    $after = json_decode(file_get_contents($afterJson), true);
     $keys = Collection\union(array_keys($before), array_keys($after));
     $changes = array_reduce($keys, function ($acc, $key) use ($before, $after) {
         if ((array_key_exists($key, $before)) && (array_key_exists($key, $after))) {
@@ -32,6 +32,7 @@ function generate($beforeJson, $afterJson)
               })->implode(PHP_EOL);
     $result = "{\n{$changesToString}\n}";
 
+    echo $result;
     return $result;
 }
 

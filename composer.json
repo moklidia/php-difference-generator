@@ -16,11 +16,10 @@
     },
     "autoload": {
         "files": [
-            "src/help.php",
+            "src/parser.php",
             "src/generator.php"
         ],
          "psr-4": {
-             "Gendiff\\": "src",
              "Gendiff\\Tests\\": "tests"
         }
     },
