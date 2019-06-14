@@ -6,9 +6,13 @@ Install:
 
 <a href="https://asciinema.org/a/mjRzD9ZYFmLYN0mq61uidWiog" target="_blank"><img src="https://asciinema.org/a/mjRzD9ZYFmLYN0mq61uidWiog.svg" /></a>
 
-Run:
+Run with JSON files:
 
 <a href="https://asciinema.org/a/nInPeojNAjqctUZys8PHSQ4Pk" target="_blank"><img src="https://asciinema.org/a/nInPeojNAjqctUZys8PHSQ4Pk.svg" /></a>
+
+Run with YAML files:
+
+<a href="https://asciinema.org/a/DvpgTxkEcumoAIhAtODXRL7of" target="_blank"><img src="https://asciinema.org/a/DvpgTxkEcumoAIhAtODXRL7of.svg" /></a>
 
 Help:
 
