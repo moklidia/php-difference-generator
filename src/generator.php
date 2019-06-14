@@ -2,13 +2,14 @@
 
 namespace Gendiff\generator;
 
+use Symfony\Component\Yaml\Yaml;
 use Funct\Collection;
 use Funct\Strings;
 
-function generate($beforeJson, $afterJson)
+function generate($file1, $file2)
 {
-    $before = json_decode(file_get_contents($beforeJson), true);
-    $after = json_decode(file_get_contents($afterJson), true);
+    $before = (array)parseFile($file1);
+    $after = (array)parseFile($file2);
     $keys = Collection\union(array_keys($before), array_keys($after));
     $changes = array_reduce($keys, function ($acc, $key) use ($before, $after) {
         if ((array_key_exists($key, $before)) && (array_key_exists($key, $after))) {
@@ -31,9 +32,22 @@ function generate($beforeJson, $afterJson)
                 return "{$key}: {$itemToString}";
               })->implode(PHP_EOL);
     $result = "{\n{$changesToString}\n}";
-
     echo $result;
     return $result;
+}
+
+function parseFile($file)
+{
+
+    $content = file_get_contents($file);
+    $extension = pathinfo($file, PATHINFO_EXTENSION);
+    if ($extension === 'json') {
+        return json_decode($content);
+    } elseif ($extension === 'yaml' || $extension = 'yml') {
+        $parsed = Yaml::parseFile($file, Yaml::PARSE_OBJECT_FOR_MAP);
+        return $parsed;
+    }
+    exit('Unknown file format');
 }
 
 function ToString($item)

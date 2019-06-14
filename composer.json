@@ -12,7 +12,8 @@
     "require": {
         "docopt/docopt": "^1.0",
         "tightenco/collect": "^5.8",
-        "funct/funct": "^1.5"
+        "funct/funct": "^1.5",
+        "symfony/yaml": "^4.3"
     },
     "autoload": {
         "files": [
@@ -20,7 +21,8 @@
             "src/generator.php"
         ],
          "psr-4": {
-             "Gendiff\\Tests\\": "tests"
+             "Gendiff\\Tests\\": "tests",
+             "Gendiff\\": "src"
         }
     },
     "require-dev": {

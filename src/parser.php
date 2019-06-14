@@ -21,18 +21,8 @@ function run()
 	DOC;
 
     $args = Docopt::handle($doc);
-
-    if (isset($args['<firstFile>']) && isset($args['<secondFile>'])) {
-        $filePath1 = $args['<firstFile>'];
-        $filePath2 = $args['<secondFile>'];
-        if (!file_exists($filePath1) && !file_exists($filePath1)) {
-            exit("File {$filePath1} does not exist\nFile {$filePath2} does not exist\n");
-        }
-        if (!file_exists($filePath1)) {
-            exit("File {$filePath1} does not exist\n");
-        } if (!file_exists($filePath2)) {
-            exit("File {$filePath2} does not exist\n");
-        }
-    }
+    $filePath1 = $args['<firstFile>'];
+    $filePath2 = $args['<secondFile>'];
+        
     return generate($filePath1, $filePath2);
 }
