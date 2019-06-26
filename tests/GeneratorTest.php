@@ -32,9 +32,9 @@ class GeneratorTest extends TestCase
      */
     public function testNestedJson()
     {
-      $path1 = __DIR__ . "/examples/beforeNested.json";
-      $path2 = __DIR__ . "/examples/afterNested.json";
-      $result = <<<EOT
+        $path1 = __DIR__ . "/examples/beforeNested.json";
+        $path2 = __DIR__ . "/examples/afterNested.json";
+        $result = <<<EOT
         {
             common: {
                 setting1: Value 1
