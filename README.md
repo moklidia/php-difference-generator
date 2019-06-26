@@ -14,6 +14,10 @@ Run with YAML files:
 
 <a href="https://asciinema.org/a/DvpgTxkEcumoAIhAtODXRL7of" target="_blank"><img src="https://asciinema.org/a/DvpgTxkEcumoAIhAtODXRL7of.svg" /></a>
 
+Run with nested structures:
+
+<a href="https://asciinema.org/a/mk5v4ZjlTKgycF9WOTAYuiWWk" target="_blank"><img src="https://asciinema.org/a/mk5v4ZjlTKgycF9WOTAYuiWWk.svg" /></a>
+
 Help:
 
 <a href="https://asciinema.org/a/pg8ZG51azn3QqBVFoP3LgKI8O" target="_blank"><img src="https://asciinema.org/a/pg8ZG51azn3QqBVFoP3LgKI8O.svg" /></a>
