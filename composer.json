@@ -13,12 +13,14 @@
         "docopt/docopt": "^1.0",
         "tightenco/collect": "^5.8",
         "funct/funct": "^1.5",
-        "symfony/yaml": "^4.3"
+        "symfony/yaml": "^4.3",
+        "nikic/php-parser": "^4.2"
     },
     "autoload": {
         "files": [
-            "src/parser.php",
-            "src/generator.php"
+            "src/runner.php",
+            "src/generator.php",
+            "src/renderer.php"
         ],
          "psr-4": {
              "Gendiff\\Tests\\": "tests",

@@ -1,8 +1,8 @@
 <?php
 
-namespace Gendiff\parser;
+namespace Gendiff\runner;
 
-use function Gendiff\generator\generate;
+use function Gendiff\generator\generateDiff;
 use Docopt;
 
 function run()
@@ -24,5 +24,5 @@ function run()
     $filePath1 = $args['<firstFile>'];
     $filePath2 = $args['<secondFile>'];
         
-    return generate($filePath1, $filePath2);
+    echo(generateDiff($filePath1, $filePath2));
 }

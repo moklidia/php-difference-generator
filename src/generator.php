@@ -4,37 +4,46 @@ namespace Gendiff\generator;
 
 use Symfony\Component\Yaml\Yaml;
 use Funct\Collection;
-use Funct\Strings;
+use function Gendiff\renderer\render;
 
-function generate($file1, $file2)
+function generateDiff($file1, $file2)
 {
-    $before = (array)parseFile($file1);
-    $after = (array)parseFile($file2);
+    $before = parseFile($file1);
+    $after = parseFile($file2);
+    $ast = generateAst($before, $after);
+    return render($ast);
+}
+
+function generateAst($before, $after)
+{
     $keys = Collection\union(array_keys($before), array_keys($after));
-    $changes = array_reduce($keys, function ($acc, $key) use ($before, $after) {
-        if ((array_key_exists($key, $before)) && (array_key_exists($key, $after))) {
-            if ($before[$key] === $after[$key]) {
-                $acc["    {$key}"] = $after[$key];
-            } else {
-                $acc["  + {$key}"] = $after[$key];
-                $acc["  - {$key}"] = $before[$key];
-            }
-        } elseif ((array_key_exists($key, $before)) && (!array_key_exists($key, $after))) {
-            $acc["  - {$key}"] = $before[$key];
-        } else {
-            $acc["  + {$key}"] = $after[$key];
-        }
+    $ast = array_reduce($keys, function ($acc, $key) use ($before, $after) {
+            $acc[] = getTypes($key, $before, $after);
         return $acc;
     });
-    $changesToString = collect($changes)
-              ->map(function ($item, $key) {
-                $itemToString = toString($item);
-                return "{$key}: {$itemToString}";
-              })->implode(PHP_EOL);
-    $result = "{\n{$changesToString}\n}";
-    echo $result;
-    return $result;
+    return $ast;
 }
+
+function getTypes($key, $before, $after)
+{
+    
+    if (!array_key_exists($key, $before)) {
+        return ['type' => 'added', 'key' => $key, 'value' => $after[$key]];
+    }
+    if (!array_key_exists($key, $after)) {
+        return ['type' => 'deleted', 'key' => $key, 'value' => $before[$key]];
+    }
+    if (is_array($before[$key]) && is_array($after[$key])) {
+        return ['type' => 'parent', 'name' => $key, 'children' => generateAst($before[$key], $after[$key])];
+    }
+    if ($before[$key] === $after[$key]) {
+        return ['type' => 'unchanged', 'key' => $key, 'value' => $before[$key]];
+    }
+    if ($before[$key] !== $after[$key]) {
+        return ['type' => 'changed', 'key' => $key, 'old_value' => $before[$key], 'new_value' => $after[$key]];
+    }
+}
+
 
 function parseFile($file)
 {
@@ -42,23 +51,10 @@ function parseFile($file)
     $content = file_get_contents($file);
     $extension = pathinfo($file, PATHINFO_EXTENSION);
     if ($extension === 'json') {
-        return json_decode($content);
+        return json_decode($content, true);
     } elseif ($extension === 'yaml' || $extension = 'yml') {
-        $parsed = Yaml::parseFile($file, Yaml::PARSE_OBJECT_FOR_MAP);
+        $parsed = Yaml::parseFile($file);
         return $parsed;
     }
     exit('Unknown file format');
-}
-
-function ToString($item)
-{
-    if ($item === true) {
-        return 'true';
-    } elseif ($item === false) {
-        return 'false';
-    } elseif ($item === null) {
-        return 'null';
-    } else {
-        return "{$item}";
-    }
 }
