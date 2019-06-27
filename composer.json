@@ -20,7 +20,12 @@
         "files": [
             "src/runner.php",
             "src/generator.php",
-            "src/renderer.php"
+            "src/pretty.php",
+            "src/json.php",
+            "src/plain.php",
+            "src/parser.php",
+            "src/astBuilder.php",
+            "src/utils.php"
         ],
          "psr-4": {
              "Gendiff\\Tests\\": "tests",

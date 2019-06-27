@@ -1,12 +1,11 @@
 <?php
 
-namespace Gendiff\renderer;
+namespace Gendiff\pretty;
 
-use Symfony\Component\Yaml\Yaml;
-use Funct\Collection;
-use Funct\Strings;
+use function Gendiff\utils\boolToDiff;
 
-function render($ast)
+
+function renderPretty($ast)
 {
     $result = getChanges($ast);
     return "{\n{$result}\n}";
@@ -53,13 +52,7 @@ function valueToDiff($value, $depth)
     }
     return $value;
 }
-function boolToDiff($value)
-{
-    if ($value === true) {
-        return 'true';
-    }
-    return 'false';
-}
+
 function arrayToDiff($items, $depth)
 {
     $indent = str_repeat('    ', $depth + 1);

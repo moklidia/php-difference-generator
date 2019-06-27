@@ -10,7 +10,7 @@ class GeneratorTest extends TestCase
     /**
      * @test
      */
-    public function testFlatJson()
+    public function testFlatJsonFormatPretty()
     {
         $path1 = __DIR__ . "/examples/before.json";
         $path2 = __DIR__ . "/examples/after.json";
@@ -24,13 +24,13 @@ class GeneratorTest extends TestCase
         }
         EOT;
 
-        $this->assertEquals($result, generateDiff($path1, $path2));
+        $this->assertEquals($result, generateDiff($path1, $path2, 'pretty'));
     }
 
     /**
      * @test
      */
-    public function testNestedJson()
+    public function testNestedJsonFormatPretty()
     {
         $path1 = __DIR__ . "/examples/beforeNested.json";
         $path2 = __DIR__ . "/examples/afterNested.json";
@@ -62,13 +62,13 @@ class GeneratorTest extends TestCase
         }
         EOT;
 
-        $this->assertEquals($result, generateDiff($path1, $path2));
+        $this->assertEquals($result, generateDiff($path1, $path2, 'pretty'));
     }
     
     /**
      * @test
      */
-    public function testFlatYaml()
+    public function testFlatYamlFormatPretty()
     {
         $path1 = __DIR__ . "/examples/before.yaml";
         $path2 = __DIR__ . "/examples/after.yaml";
@@ -82,6 +82,42 @@ class GeneratorTest extends TestCase
         }
         EOT;
 
-        $this->assertEquals($result, generateDiff($path1, $path2));
+        $this->assertEquals($result, generateDiff($path1, $path2, 'pretty'));
+    }
+
+    /**
+     * @test
+     */
+    public function testFlatJsonFormatPlain()
+    {
+        $path1 = __DIR__ . "/examples/before.json";
+        $path2 = __DIR__ . "/examples/after.json";
+        $result = <<<EOT
+      Property 'timeout' was changed. From '50' to '20'
+      Property 'proxy' was removed
+      Property 'verbose' was added with value: 'true'
+      EOT;
+
+        $this->assertEquals($result, generateDiff($path1, $path2, 'plain'));
+    }
+
+    /**
+     * @test
+     */
+    public function testNestedJsonFormatPlain()
+    {
+        $path1 = __DIR__ . "/examples/beforeNested.json";
+        $path2 = __DIR__ . "/examples/afterNested.json";
+        $result = <<<EOT
+      Property 'common.setting2' was removed
+      Property 'common.setting6' was removed
+      Property 'common.setting4' was added with value: 'blah blah'
+      Property 'common.setting5' was added with value: 'complex value'
+      Property 'group1.baz' was changed. From 'bas' to 'bars'
+      Property 'group2' was removed
+      Property 'group3' was added with value: 'complex value'
+      EOT;
+
+        $this->assertEquals($result, generateDiff($path1, $path2, 'plain'));
     }
 }

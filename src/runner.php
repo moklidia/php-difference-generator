@@ -23,6 +23,9 @@ function run()
     $args = Docopt::handle($doc);
     $filePath1 = $args['<firstFile>'];
     $filePath2 = $args['<secondFile>'];
+    $format = $args['--format'];
+    var_dump($args);
         
-    echo(generateDiff($filePath1, $filePath2));
+    echo(generateDiff($filePath1, $filePath2, $format));
+    return (generateDiff($filePath1, $filePath2, $format));
 }
