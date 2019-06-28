@@ -13,7 +13,6 @@ function getChanges($ast, $parent = null)
 {
     $result = array_reduce($ast, function ($acc, $node) use ($parent) {
         if ($node['type'] === 'parent') {
-            var_dump($node['children']);
             $acc[] = getChanges($node['children'], $node['name']);
         }
         if ($node['type'] === 'deleted') {
