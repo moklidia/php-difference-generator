@@ -13,8 +13,7 @@
         "docopt/docopt": "^1.0",
         "tightenco/collect": "^5.8",
         "funct/funct": "^1.5",
-        "symfony/yaml": "^4.3",
-        "nikic/php-parser": "^4.2"
+        "symfony/yaml": "^4.3"
     },
     "autoload": {
         "files": [
