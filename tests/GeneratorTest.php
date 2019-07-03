@@ -7,13 +7,10 @@ use function Gendiff\Generator\generateDiff;
 
 class GeneratorTest extends TestCase
 {
-    /**
-     * @test
-     */
     public function testFlatJsonFormatPretty()
     {
-        $path1 = __DIR__ . "/examples/before.json";
-        $path2 = __DIR__ . "/examples/after.json";
+        $path1 = __DIR__ . "/fixtures/before.json";
+        $path2 = __DIR__ . "/fixtures/after.json";
         $result = <<<EOT
         {
             host: hexlet.io
@@ -27,13 +24,10 @@ class GeneratorTest extends TestCase
         $this->assertEquals($result, generateDiff($path1, $path2, 'pretty'));
     }
 
-    /**
-     * @test
-     */
     public function testNestedJsonFormatPretty()
     {
-        $path1 = __DIR__ . "/examples/beforeNested.json";
-        $path2 = __DIR__ . "/examples/afterNested.json";
+        $path1 = __DIR__ . "/fixtures/beforeNested.json";
+        $path2 = __DIR__ . "/fixtures/afterNested.json";
         $result = <<<EOT
         {
             common: {
@@ -65,13 +59,10 @@ class GeneratorTest extends TestCase
         $this->assertEquals($result, generateDiff($path1, $path2, 'pretty'));
     }
     
-    /**
-     * @test
-     */
     public function testFlatYamlFormatPretty()
     {
-        $path1 = __DIR__ . "/examples/before.yaml";
-        $path2 = __DIR__ . "/examples/after.yaml";
+        $path1 = __DIR__ . "/fixtures/before.yaml";
+        $path2 = __DIR__ . "/fixtures/after.yaml";
         $result = <<<EOT
         {
             host: hexlet.io
@@ -85,13 +76,10 @@ class GeneratorTest extends TestCase
         $this->assertEquals($result, generateDiff($path1, $path2, 'pretty'));
     }
 
-    /**
-     * @test
-     */
     public function testFlatJsonFormatPlain()
     {
-        $path1 = __DIR__ . "/examples/before.json";
-        $path2 = __DIR__ . "/examples/after.json";
+        $path1 = __DIR__ . "/fixtures/before.json";
+        $path2 = __DIR__ . "/fixtures/after.json";
         $result = <<<EOT
       Property 'timeout' was changed. From '50' to '20'
       Property 'proxy' was removed
@@ -101,13 +89,10 @@ class GeneratorTest extends TestCase
         $this->assertEquals($result, generateDiff($path1, $path2, 'plain'));
     }
 
-    /**
-     * @test
-     */
     public function testNestedJsonFormatPlain()
     {
-        $path1 = __DIR__ . "/examples/beforeNested.json";
-        $path2 = __DIR__ . "/examples/afterNested.json";
+        $path1 = __DIR__ . "/fixtures/beforeNested.json";
+        $path2 = __DIR__ . "/fixtures/afterNested.json";
         $result = <<<EOT
       Property 'common.setting2' was removed
       Property 'common.setting6' was removed
