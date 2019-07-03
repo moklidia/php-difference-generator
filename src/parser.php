@@ -4,16 +4,15 @@ namespace Gendiff\parser;
 
 use Symfony\Component\Yaml\Yaml;
 
-function parseFile($file)
+function parse($content, $fileExtension)
 {
-
-    $content = file_get_contents($file);
-    $extension = pathinfo($file, PATHINFO_EXTENSION);
-    if ($extension === 'json') {
-        return json_decode($content, true);
-    } elseif ($extension === 'yaml' || $extension = 'yml') {
-        $parsed = Yaml::parseFile($file);
-        return $parsed;
-    }
-    exit('Unknown file format');
+    $mapping = [
+        'json' => function ($content) {
+            return json_decode($content, true);
+        },
+        'yaml' => function ($content) {
+            return Yaml::parse($content);
+        }
+    ];
+    return $mapping[$fileExtension] ($content);
 }
