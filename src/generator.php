@@ -4,9 +4,9 @@ namespace Gendiff\generator;
 
 use function Gendiff\parser\parse;
 use function Gendiff\astBuilder\generateAst;
-use function Gendiff\pretty\renderPretty;
-use function Gendiff\json\renderJson;
-use function Gendiff\plain\renderPlain;
+use function Gendiff\formatters\pretty\renderPretty;
+use function Gendiff\formatters\json\renderJson;
+use function Gendiff\formatters\plain\renderPlain;
 
 function generateDiff($filepath1, $filepath2, $format)
 {
@@ -16,6 +16,11 @@ function generateDiff($filepath1, $filepath2, $format)
     $parsedBefore = parse($rawBefore, pathinfo($filepath1, PATHINFO_EXTENSION));
     $parsedAfter = parse($rawAfter, pathinfo($filepath2, PATHINFO_EXTENSION));
     $ast = generateAst($parsedBefore, $parsedAfter);
+    return chooseParser($ast, $format);
+}
+
+function chooseParser($ast, $format)
+{
     $mapping = [
         'pretty' => function ($ast) {
             return renderPretty($ast);

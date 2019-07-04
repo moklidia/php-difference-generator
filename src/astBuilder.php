@@ -30,6 +30,6 @@ function getTypes($key, $before, $after)
         return ['type' => 'unchanged', 'key' => $key, 'value' => $before[$key]];
     }
     if ($before[$key] !== $after[$key]) {
-        return ['type' => 'changed', 'key' => $key, 'old_value' => $before[$key], 'new_value' => $after[$key]];
+        return ['type' => 'changed', 'key' => $key, 'oldValue' => $before[$key], 'newValue' => $after[$key]];
     }
 }

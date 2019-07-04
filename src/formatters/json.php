@@ -1,6 +1,6 @@
 <?php
 
-namespace Gendiff\json;
+namespace Gendiff\formatters\json;
 
 function renderJson($ast)
 {

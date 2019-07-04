@@ -19,9 +19,9 @@
         "files": [
             "src/runner.php",
             "src/generator.php",
-            "src/pretty.php",
-            "src/json.php",
-            "src/plain.php",
+            "src/formatters/pretty.php",
+            "src/formatters/json.php",
+            "src/formatters/plain.php",
             "src/parser.php",
             "src/astBuilder.php",
             "src/utils.php"
